@@ -1,0 +1,103 @@
+.projects {
+  position: relative;
+  width: 100%;
+  margin: 150px 5%;
+  .project-section-title {
+    color: rgba($white, 0.75);
+    font-size: 1.5rem;
+  }
+  .project-link {
+    text-decoration: none;
+    .project-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      border-bottom: 2px solid $background;
+      color: $white;
+      h3 {
+        font-size: 6rem;
+        margin: 6rem 0;
+        font-weight: 300;
+        @media (max-width: $layout-breakpoint-medium) {
+          font-size: 2rem;
+        }
+      }
+      span {
+        color: $orange;
+        font-size: 2rem;
+        font-weight: 300;
+        border: 2px solid $orange;
+        border-radius: 2px;
+        padding: 1rem 2rem;
+      }
+      .span--desktop {
+        @media (max-width: $layout-breakpoint-medium) {
+          display: none;
+        }
+      }
+      .span--mobile {
+        @media (max-width: $layout-breakpoint-medium) {
+          display: block;
+        }
+        @media (min-width: $layout-breakpoint-medium) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.transition-image {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $black;
+  width: 50vw;
+  min-height: 200px;
+  top: calc(50% - 100px);
+  left: calc(50% - 25vw);
+  span {
+    color: $black;
+    text-align: center;
+    font-size: clamp(4rem, 7rem, 9rem);
+    padding: 2rem 0;
+  }
+  &.final {
+    position: relative;
+    left: 0;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 0.3rem;
+  }
+}
+
+.scroll {
+  height: 14rem;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background: $white;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: -7rem;
+  left: 10rem;
+  @media (max-width: $layout-breakpoint-medium) {
+    left: 60px;
+  }
+  @media (max-width: 1240px) {
+    display: none;
+  }
+  span {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin: 4px 0;
+    @media (max-width: $layout-breakpoint-xsmall) {
+      font-size: 10px;
+      margin: 2px 0;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+$background: #f0eff1;
+$white: #fff;
+$black: #24242a;
+$orange: #ff4500;
+
+$layout-breakpoint-large: 1920px;
+$layout-breakpoint-medium: 1440px;
+$layout-breakpoint-small: 960px;
+$layout-breakpoint-xsmall: 480px;
+
+@import "base/reset";
+@import "base/typography";
+
+@import "components/cursor";
+@import "components/header";
+@import "components/banner";
+@import "components/projects";
+@import "components/about";
+@import "components/loader";
+
+body {
+  background: $background;
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+  max-width: $layout-breakpoint-large;
+}
