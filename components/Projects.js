@@ -1,7 +1,69 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import SampleData from "../assets/data/SampleData";
+
+const ImageFollower = () => {
+  const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
+  const [hoveredImage, setHoveredImage] = useState(null);
+  const [isImageVisible, setIsImageVisible] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setImagePos({
+        x: e.clientX,
+        y: e.clientY,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMouseEnter = (e) => {
+      const id = e.target.getAttribute("data-id");
+      setHoveredImage(id);
+      setIsImageVisible(true);
+    };
+
+    const handleMouseLeave = () => {
+      setHoveredImage(null);
+      setIsImageVisible(false);
+    };
+    const itemElements = document.querySelectorAll(".project-item");
+    itemElements.forEach((element) => {
+      element.addEventListener("mouseenter", handleMouseEnter);
+      element.addEventListener("mouseleave", handleMouseLeave);
+    });
+    return () => {
+      itemElements.forEach((element) => {
+        element.removeEventListener("mouseenter", handleMouseEnter);
+        element.removeEventListener("mouseleave", handleMouseLeave);
+      });
+    };
+  }, []);
+
+  return (
+    isImageVisible && (
+      <div
+        className="hover-image"
+        style={{
+          left: imagePos.x - 200,
+          top: imagePos.y - 150,
+        }}
+      >
+        <motion.img
+          src={hoveredImage && SampleData[hoveredImage - 1].mediaUrl}
+        />
+      </div>
+    )
+  );
+};
 
 const Projects = () => {
   return (
@@ -40,16 +102,19 @@ const Projects = () => {
         className="projects"
       >
         <span className="project-section-title">// Projecten</span>
-        {SampleData.map(({ title }, index) => (
-          <Link key={index} href="" className="project-link">
-            <div className="project-item">
-              <h3>{title}</h3>
-              <span className="span--desktop">
-                Interactie &amp; Ontwikkeling
-              </span>
-              <span className="span--mobile">I &amp; O</span>
-            </div>
-          </Link>
+        {SampleData.map(({ title, id }) => (
+          <>
+            <Link key={id} href="" className="project-link">
+              <div className="project-item" data-id={id}>
+                <h3>{title}</h3>
+                <span className="span--desktop">
+                  Interactie &amp; Ontwikkeling
+                </span>
+                <span className="span--mobile">I &amp; O</span>
+              </div>
+            </Link>
+            <ImageFollower />
+          </>
         ))}
       </motion.div>
     </motion.div>

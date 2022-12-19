@@ -2,12 +2,19 @@
   position: relative;
   width: 100%;
   margin: 150px 5%;
+  @media (max-width: $layout-breakpoint-small) {
+    margin: 80px 5%;
+  }
   .project-section-title {
     color: rgba($white, 0.75);
     font-size: 1.5rem;
+    @media (max-width: $layout-breakpoint-small) {
+      font-size: 1.2rem;
+    }
   }
   .project-link {
     text-decoration: none;
+    z-index: 2;
     .project-item {
       display: flex;
       justify-content: space-between;
@@ -20,7 +27,8 @@
         margin: 6rem 0;
         font-weight: 300;
         @media (max-width: $layout-breakpoint-medium) {
-          font-size: 2rem;
+          font-size: 3rem;
+          margin: 5rem 0;
         }
       }
       span {
@@ -99,5 +107,19 @@
       font-size: 10px;
       margin: 2px 0;
     }
+  }
+}
+
+.hover-image {
+  width: 400px;
+  height: 300px;
+  pointer-events: none;
+  z-index: 0;
+  position: fixed;
+  img {
+    object-fit: cover;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
   }
 }
