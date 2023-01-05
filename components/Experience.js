@@ -1,4 +1,5 @@
 import {
+  Text,
   Html,
   ContactShadows,
   Float,
@@ -6,14 +7,14 @@ import {
   useGLTF,
 } from "@react-three/drei";
 
-export default function Experience() {
+export default function Experience({ url }) {
   const computer = useGLTF(
     "https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf"
   );
 
   return (
     <>
-      <color args={["#695b5b"]} attach="background" />
+      <color args={["#f0eff1"]} attach="background" />
 
       <Environment preset="city" />
 
@@ -27,7 +28,12 @@ export default function Experience() {
           position={[0, 0.55, -1.15]}
         />
 
-        <primitive object={computer.scene} position-y={-1.2} rotation-y={-1}>
+        <primitive
+          object={computer.scene}
+          position-y={-1.2}
+          rotation-y={-1}
+          position-x={1.2}
+        >
           <Html
             transform
             wrapperClass="htmlScreen"
@@ -35,12 +41,21 @@ export default function Experience() {
             position={[-0.05, 1.55, -1.5]}
             rotation-x={-0.256}
           >
-            <iframe src="https://www.mursee.nl/" />
+            <iframe src={url} />
           </Html>
         </primitive>
+        <Text
+          color={"#888"}
+          fontSize={0.09}
+          position-y={0.6}
+          // rotation-z={1.4}
+          position-x={0.3}
+        >
+          Gebruik mij!
+        </Text>
       </Float>
 
-      <ContactShadows position-y={-1.4} opacity={0.4} scale={5} blur={2.4} />
+      <ContactShadows position-y={-1} opacity={0.4} scale={5} blur={2.4} />
     </>
   );
 }

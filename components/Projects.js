@@ -53,8 +53,8 @@ const ImageFollower = () => {
       <div
         className="hover-image"
         style={{
-          left: imagePos.x - 200,
-          top: imagePos.y - 150,
+          left: imagePos.x - 150,
+          top: imagePos.y - 112,
         }}
       >
         <motion.img
@@ -102,9 +102,12 @@ const Projects = () => {
         className="projects"
       >
         <span className="project-section-title">// Projecten</span>
-        {SampleData.map(({ title, id }) => (
-          <>
-            <Link key={id} href="" className="project-link">
+        {SampleData.map(({ title, slug, id }) => (
+          <div key={id}>
+            <Link
+              href={{ pathname: `/projects/${slug}` }}
+              className="project-link"
+            >
               <div className="project-item" data-id={id}>
                 <h3>{title}</h3>
                 <span className="span--desktop">
@@ -114,7 +117,7 @@ const Projects = () => {
               </div>
             </Link>
             <ImageFollower />
-          </>
+          </div>
         ))}
       </motion.div>
     </motion.div>

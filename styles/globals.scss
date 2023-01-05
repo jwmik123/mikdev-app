@@ -15,7 +15,9 @@ $layout-breakpoint-xsmall: 480px;
 @import "components/header";
 @import "components/banner";
 @import "components/projects";
+@import "components/project-page";
 @import "components/about";
+@import "components/contact";
 @import "components/loader";
 
 body {

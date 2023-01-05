@@ -1,0 +1,14 @@
+.project-page {
+  height: 50vh;
+}
+
+canvas {
+  touch-action: none;
+}
+.htmlScreen iframe {
+  width: 1024px;
+  height: 640px;
+  border: none;
+  border-radius: 20px;
+  background-color: #fff;
+}

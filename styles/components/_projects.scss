@@ -26,8 +26,8 @@
         font-size: 6rem;
         margin: 6rem 0;
         font-weight: 300;
-        @media (max-width: $layout-breakpoint-medium) {
-          font-size: 3rem;
+        @media (max-width: $layout-breakpoint-small) {
+          font-size: 2.5rem;
           margin: 5rem 0;
         }
       }
@@ -40,15 +40,15 @@
         padding: 1rem 2rem;
       }
       .span--desktop {
-        @media (max-width: $layout-breakpoint-medium) {
+        @media (max-width: $layout-breakpoint-small) {
           display: none;
         }
       }
       .span--mobile {
-        @media (max-width: $layout-breakpoint-medium) {
+        @media (max-width: $layout-breakpoint-small) {
           display: block;
         }
-        @media (min-width: $layout-breakpoint-medium) {
+        @media (min-width: $layout-breakpoint-small) {
           display: none;
         }
       }
@@ -111,8 +111,8 @@
 }
 
 .hover-image {
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 225px;
   pointer-events: none;
   z-index: 0;
   position: fixed;
