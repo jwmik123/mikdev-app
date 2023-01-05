@@ -5,8 +5,9 @@ import Header from "../components/Header";
 import Banner from "../components/Banner";
 import Projects from "../components/Projects";
 import About from "../components/About";
+import { fetchAPI } from "../lib/projects";
 
-export default function Home() {
+export default function Home({ projects }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -26,11 +27,18 @@ export default function Home() {
         <div className="container">
           <Header />
           <Banner />
-          <Projects />
+          <Projects projects={projects} />
           <About />
         </div>
       )}
     </AnimatePresence>
     // </AnimateSharedLayout>
   );
+}
+
+export async function getStaticProps() {
+  const [projects] = await Promise.all([fetchAPI("/projects")]);
+  return {
+    props: { projects },
+  };
 }

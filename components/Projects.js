@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import SampleData from "../assets/data/SampleData";
+import { fetchAPI } from "../lib/projects";
 
 const ImageFollower = () => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
@@ -65,7 +66,8 @@ const ImageFollower = () => {
   );
 };
 
-const Projects = () => {
+const Projects = ({ projects }) => {
+  console.log(projects);
   return (
     <motion.div
       transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 1.6 }}
@@ -102,14 +104,14 @@ const Projects = () => {
         className="projects"
       >
         <span className="project-section-title">// Projecten</span>
-        {SampleData.map(({ title, slug, id }) => (
-          <div key={id}>
+        {projects.data?.map((project) => (
+          <div key={project.id}>
             <Link
-              href={{ pathname: `/projects/${slug}` }}
+              href={{ pathname: `/projects/${project.attributes.slug}` }}
               className="project-link"
             >
-              <div className="project-item" data-id={id}>
-                <h3>{title}</h3>
+              <div className="project-item" data-id={project.id}>
+                <h3>{project.attributes.title}</h3>
                 <span className="span--desktop">
                   Interactie &amp; Ontwikkeling
                 </span>
@@ -123,5 +125,14 @@ const Projects = () => {
     </motion.div>
   );
 };
+
+export async function getServerSideProps() {
+  const projects = await fetchAPI("/projects");
+  return {
+    props: {
+      projects,
+    },
+  };
+}
 
 export default Projects;
