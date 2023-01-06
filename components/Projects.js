@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import SampleData from "../assets/data/SampleData";
-import { fetchAPI } from "../lib/projects";
+import { fetchAPI } from "../lib/api";
 
 const ImageFollower = () => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
@@ -67,7 +67,6 @@ const ImageFollower = () => {
 };
 
 const Projects = ({ projects }) => {
-  console.log(projects);
   return (
     <motion.div
       transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 1.6 }}
@@ -104,7 +103,7 @@ const Projects = ({ projects }) => {
         className="projects"
       >
         <span className="project-section-title">// Projecten</span>
-        {projects.data?.map((project) => (
+        {projects.data.map((project) => (
           <div key={project.id}>
             <Link
               href={{ pathname: `/projects/${project.attributes.slug}` }}
@@ -125,14 +124,5 @@ const Projects = ({ projects }) => {
     </motion.div>
   );
 };
-
-export async function getServerSideProps() {
-  const projects = await fetchAPI("/projects");
-  return {
-    props: {
-      projects,
-    },
-  };
-}
 
 export default Projects;
