@@ -105,10 +105,7 @@ const Projects = ({ projects }) => {
         <span className="project-section-title">// Projecten</span>
         {projects.data.map((project) => (
           <div key={project.id}>
-            <Link
-              href={{ pathname: `/projects/${project.attributes.slug}` }}
-              className="project-link"
-            >
+            <Link href={`/projects/${project.id}`} className="project-link">
               <div className="project-item" data-id={project.id}>
                 <h3>{project.attributes.title}</h3>
                 <span className="span--desktop">
