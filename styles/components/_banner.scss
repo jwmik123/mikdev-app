@@ -20,6 +20,9 @@
     &.center {
       justify-content: center;
       text-align: center;
+      @media (max-width: $layout-breakpoint-xsmall) {
+        justify-content: left;
+      }
       .row-letter {
         left: 0;
       }
@@ -29,14 +32,21 @@
     }
     .row-title,
     .row-letter {
-      font-size: 21rem;
-      font-weight: 500;
+      font-size: 22rem;
+      font-weight: 400;
       position: relative;
-      letter-spacing: -0.8rem;
       display: inline-block;
       white-space: nowrap;
+      @media (max-width: $layout-breakpoint-medium) {
+        font-size: 12rem;
+        letter-spacing: -0.4rem;
+      }
       @media (max-width: $layout-breakpoint-small) {
         font-size: 8rem;
+        letter-spacing: -0.4rem;
+      }
+      @media (max-width: $layout-breakpoint-small) {
+        font-size: 6rem;
         letter-spacing: -0.4rem;
       }
     }

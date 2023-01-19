@@ -17,11 +17,13 @@ $layout-breakpoint-xsmall: 480px;
 @import "components/projects";
 @import "components/project-page";
 @import "components/about";
+@import "components/footer";
 @import "components/contact";
 @import "components/loader";
 
 body {
   background: $background;
+  cursor: none;
 }
 
 .container {

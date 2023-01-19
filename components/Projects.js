@@ -3,9 +3,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import SampleData from "../assets/data/SampleData";
-import { fetchAPI } from "../lib/api";
 
-const ImageFollower = () => {
+const ImageFollower = ({ slug }) => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
   const [hoveredImage, setHoveredImage] = useState(null);
   const [isImageVisible, setIsImageVisible] = useState(false);
@@ -49,6 +48,8 @@ const ImageFollower = () => {
     };
   }, []);
 
+  console.log(hoveredImage);
+
   return (
     isImageVisible && (
       <div
@@ -59,7 +60,13 @@ const ImageFollower = () => {
         }}
       >
         <motion.img
-          src={hoveredImage && SampleData[hoveredImage - 1].mediaUrl}
+          // src={hoveredImage && SampleData[3].mediaUrl}
+          src={
+            hoveredImage &&
+            `https://mik-development.s3.eu-central-1.amazonaws.com/` +
+              slug +
+              ".png"
+          }
         />
       </div>
     )
@@ -102,8 +109,14 @@ const Projects = ({ projects }) => {
         }}
         className="projects"
       >
-        <span className="project-section-title">// Projecten</span>
-        {projects.data.map((project) => (
+        <div className="project-section-titles">
+          <span className="project-section-title">// Projecten</span>
+          <button className="project-section-all-projects">
+            <Link href="/projects">Bekijk alle projecten &gt;</Link>
+          </button>
+        </div>
+
+        {projects.data.slice(0, 4).map((project) => (
           <div key={project.id}>
             <Link href={`/projects/${project.id}`} className="project-link">
               <div className="project-item" data-id={project.id}>
@@ -114,7 +127,8 @@ const Projects = ({ projects }) => {
                 <span className="span--mobile">I &amp; O</span>
               </div>
             </Link>
-            <ImageFollower />
+            <ImageFollower id={project.id} slug={project.attributes.slug} />
+            {console.log(project.attributes)}
           </div>
         ))}
       </motion.div>

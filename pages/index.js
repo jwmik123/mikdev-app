@@ -7,6 +7,7 @@ import Projects from "../components/Projects";
 import About from "../components/About";
 
 import { fetchAPI } from "../lib/api";
+import Footer from "../components/Footer";
 
 export default function Home({ projects }) {
   const [loading, setLoading] = useState(true);
@@ -24,12 +25,15 @@ export default function Home({ projects }) {
           <Loader setLoading={setLoading} />
         </motion.div>
       ) : (
-        <div className="container">
-          <Header />
-          <Banner />
-          <Projects projects={projects} />
-          <About />
-        </div>
+        <>
+          <div className="container">
+            <Header />
+            <Banner />
+            <Projects projects={projects} />
+            <About />
+          </div>
+          <Footer />
+        </>
       )}
     </AnimatePresence>
   );

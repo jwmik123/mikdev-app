@@ -5,6 +5,28 @@
   @media (max-width: $layout-breakpoint-small) {
     margin: 80px 5%;
   }
+  .project-section-titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .project-section-all-projects {
+      background: none;
+      border: none;
+      text-decoration: underline;
+      padding: 0.5rem 1.5rem;
+      margin: 0;
+      cursor: pointer;
+      font-size: 2rem;
+      a {
+        color: $white;
+        font-weight: 500;
+      }
+      @media (max-width: $layout-breakpoint-small) {
+        font-size: 1.2rem;
+      }
+    }
+  }
   .project-section-title {
     color: rgba($white, 0.75);
     font-size: 1.5rem;
@@ -25,7 +47,8 @@
       h3 {
         font-size: 6rem;
         margin: 6rem 0;
-        font-weight: 300;
+        font-weight: 400;
+        font-family: "Unbounded", sans-serif;
         @media (max-width: $layout-breakpoint-small) {
           font-size: 2.5rem;
           margin: 5rem 0;

@@ -44,7 +44,7 @@ export default function DetailProject({ project }) {
         <h1>{project.attributes.title}</h1>
         <p>{project.attributes.content}</p>
         <Image
-          src="http://localhost:1337/uploads/Scherm_afbeelding_2023_01_05_om_15_04_43_b9a31d252e.png"
+          src="https://mik-development.s3.eu-central-1.amazonaws.com/mursee.png"
           width="400"
           height="300"
           alt={project.attributes.slug}

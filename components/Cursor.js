@@ -30,8 +30,8 @@ const Cursor = () => {
         let y = coords.y;
 
         circles.forEach((circle, index) => {
-          circle.style.left = x - 13 + "px";
-          circle.style.top = y - 13 + "px";
+          circle.style.left = x - 8 + "px";
+          circle.style.top = y - 8 + "px";
           circle.style.scale = (circles.length - index) / circles.length;
           circle.x = x;
           circle.y = y;
@@ -51,21 +51,6 @@ const Cursor = () => {
 
   return (
     <>
-      {/* {hovered ? (
-        <motion.div
-          initial={{ scale: 1 }}
-          animate={{ scale: 2 }}
-          transition={{ ease: "easeInOut", duration: 0.2 }}
-          className="circle"
-        ></motion.div>
-      ) : (
-        <motion.div
-          initial={{ scale: 2 }}
-          animate={{ scale: 1 }}
-          transition={{ ease: "easeInOut", duration: 0.2 }}
-          className="circle"
-        ></motion.div>
-      )} */}
       <div className="circle"></div>
       <div className="circle"></div>
       <div className="circle"></div>
