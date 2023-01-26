@@ -133,6 +133,7 @@ const Projects = ({ projects }) => {
               </div>
             </Link>
             <ImageFollower id={project.id} slug={project.attributes.slug} />
+            {console.log(project.attributes.headerImage)}
           </div>
         ))}
       </motion.div>
