@@ -7,6 +7,7 @@ import SampleData from "../assets/data/SampleData";
 const ImageFollower = ({ slug }) => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
   const [hoveredImage, setHoveredImage] = useState(null);
+  const [hoveredImageSlug, setHoveredImageSlug] = useState(null);
   const [isImageVisible, setIsImageVisible] = useState(false);
 
   useEffect(() => {
@@ -27,6 +28,8 @@ const ImageFollower = ({ slug }) => {
   useEffect(() => {
     const handleMouseEnter = (e) => {
       const id = e.target.getAttribute("data-id");
+      const slug = e.target.getAttribute("data-slug");
+      setHoveredImageSlug(slug);
       setHoveredImage(id);
       setIsImageVisible(true);
     };
@@ -48,8 +51,6 @@ const ImageFollower = ({ slug }) => {
     };
   }, []);
 
-  console.log(hoveredImage);
-
   return (
     isImageVisible && (
       <div
@@ -64,7 +65,7 @@ const ImageFollower = ({ slug }) => {
           src={
             hoveredImage &&
             `https://mik-development.s3.eu-central-1.amazonaws.com/` +
-              slug +
+              hoveredImageSlug +
               ".png"
           }
         />
@@ -119,7 +120,11 @@ const Projects = ({ projects }) => {
         {projects.data.slice(0, 4).map((project) => (
           <div key={project.id}>
             <Link href={`/projects/${project.id}`} className="project-link">
-              <div className="project-item" data-id={project.id}>
+              <div
+                className="project-item"
+                data-id={project.id}
+                data-slug={project.attributes.slug}
+              >
                 <h3>{project.attributes.title}</h3>
                 <span className="span--desktop">
                   Interactie &amp; Ontwikkeling
@@ -128,7 +133,6 @@ const Projects = ({ projects }) => {
               </div>
             </Link>
             <ImageFollower id={project.id} slug={project.attributes.slug} />
-            {console.log(project.attributes)}
           </div>
         ))}
       </motion.div>
