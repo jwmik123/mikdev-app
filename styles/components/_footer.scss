@@ -1,15 +1,16 @@
-footer {
-  .marquee {
-    color: $white;
-    background-color: $orange;
-    padding: 1rem 0 1rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-    span {
-      font-size: 3rem;
-      text-transform: uppercase;
-    }
+.marquee {
+  color: $white;
+  background-color: $orange;
+  padding: 1rem 0 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  span {
+    font-size: 3rem;
+    text-transform: uppercase;
   }
+}
+
+footer {
   width: 100%;
   background: $black;
   padding-left: 2.5%;
@@ -21,7 +22,7 @@ footer {
     .footer-top {
       width: 90%;
       margin: 0 auto;
-      padding: 0 0 4rem;
+      padding: 2rem 0 4rem;
       h1 {
         font-size: 4rem;
         color: $white;
