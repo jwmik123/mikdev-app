@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Marquee from "react-fast-marquee";
 const Footer = () => {
+  const [active, setActive] = useState(false);
   return (
     <>
       <Marquee
@@ -22,14 +24,19 @@ const Footer = () => {
           <div className="footer-top">
             <h1>Interesse in een samenwerking?</h1>
             <div className="email-container" data-animation="to-top">
-              <span
-                className="send-email"
-                onClick={() => {
-                  navigator.clipboard.writeText("joel@mikdevelopment.nl");
-                }}
-              >
-                joel@mikdevelopment.nl
-              </span>
+              {active ? (
+                <span className="send-email">email gekopieerd!</span>
+              ) : (
+                <span
+                  className="send-email"
+                  onClick={() => {
+                    navigator.clipboard.writeText("joel@mikdevelopment.nl");
+                    setActive(true);
+                  }}
+                >
+                  joel@mikdevelopment.nl
+                </span>
+              )}
             </div>
           </div>
           <div className="footer-bottom">
