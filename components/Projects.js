@@ -1,14 +1,23 @@
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-import SampleData from "../assets/data/SampleData";
-
-const ImageFollower = ({ slug }) => {
+const ImageFollower = () => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
   const [hoveredImage, setHoveredImage] = useState(null);
   const [hoveredImageSlug, setHoveredImageSlug] = useState(null);
   const [isImageVisible, setIsImageVisible] = useState(false);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    gsap.to(imageRef.current, {
+      duration: 0.3,
+      left: imagePos.x - 150,
+      top: imagePos.y - 112,
+      ease: "Power1.out",
+    });
+  }, [imagePos]);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -55,20 +64,15 @@ const ImageFollower = ({ slug }) => {
     isImageVisible && (
       <div
         className="hover-image"
+        ref={imageRef}
         style={{
           left: imagePos.x - 150,
           top: imagePos.y - 112,
         }}
       >
-        <motion.img
-          // src={hoveredImage && SampleData[3].mediaUrl}
-          src={
-            hoveredImage &&
-            `https://mik-development.s3.eu-central-1.amazonaws.com/` +
-              hoveredImageSlug +
-              ".png"
-          }
-        />
+        <div className="slider">
+          <img src={hoveredImage && hoveredImageSlug} />
+        </div>
       </div>
     )
   );
@@ -123,7 +127,7 @@ const Projects = ({ projects }) => {
               <div
                 className="project-item"
                 data-id={project.id}
-                data-slug={project.attributes.slug}
+                data-slug={project.attributes.headerImage.data.attributes.url}
               >
                 <h3>{project.attributes.title}</h3>
                 <span className="span--desktop">
@@ -132,8 +136,7 @@ const Projects = ({ projects }) => {
                 <span className="span--mobile">I &amp; O</span>
               </div>
             </Link>
-            <ImageFollower id={project.id} slug={project.attributes.slug} />
-            {console.log(project.attributes.headerImage)}
+            <ImageFollower id={project.id} />
           </div>
         ))}
       </motion.div>

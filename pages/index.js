@@ -7,6 +7,8 @@ import Projects from "../components/Projects";
 import About from "../components/About";
 
 import { fetchAPI } from "../lib/api";
+import axios from "axios";
+import qs from "qs";
 import Footer from "../components/Footer";
 
 export default function Home({ projects }) {
@@ -39,14 +41,24 @@ export default function Home({ projects }) {
   );
 }
 
-export async function getStaticProps() {
-  const projectsResponse = await fetchAPI(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/projects`
-  );
-  console.log(projectsResponse);
-  return {
-    props: {
-      projects: projectsResponse,
+Home.getInitialProps = async (ctx) => {
+  const query = qs.stringify(
+    {
+      populate: {
+        headerImage: {
+          fields: ["name", "url"],
+        },
+      },
     },
-  };
-}
+    { encodeValuesOnly: true }
+  );
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/projects?${query}`
+    );
+    const projects = res.data;
+    return { projects };
+  } catch (error) {
+    return { error };
+  }
+};

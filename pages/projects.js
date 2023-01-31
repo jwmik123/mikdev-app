@@ -1,5 +1,7 @@
 import Projects from "../components/Projects";
-import { fetchAPI } from "../lib/api";
+
+import axios from "axios";
+import qs from "qs";
 
 const ProjectsList = ({ projects }) => {
   return (
@@ -9,25 +11,26 @@ const ProjectsList = ({ projects }) => {
   );
 };
 
-export default ProjectsList;
-
-export async function getStaticProps() {
-  const qs = require("qs");
+ProjectsList.getInitialProps = async (ctx) => {
   const query = qs.stringify(
     {
-      populate: "*",
+      populate: {
+        headerImage: {
+          fields: ["name", "url"],
+        },
+      },
     },
-    {
-      encodeValuesOnly: true, // prettifies URL, not sure if necessary...
-    }
+    { encodeValuesOnly: true }
   );
-  const projectsResponse = await fetchAPI(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/projects?${query}`
-    // `${process.env.NEXT_PUBLIC_BASE_URL}/projects?populate[headerImage][fields][0]=name&populate[headerImage][fields][1]=url&populate[images][fields]`
-  );
-  return {
-    props: {
-      projects: projectsResponse,
-    },
-  };
-}
+  try {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/projects?${query}`
+    );
+    const projects = res.data;
+    return { projects };
+  } catch (error) {
+    return { error };
+  }
+};
+
+export default ProjectsList;

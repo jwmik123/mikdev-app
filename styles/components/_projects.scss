@@ -75,6 +75,17 @@
           display: none;
         }
       }
+      &:hover {
+        // background-color: darken($orange, 5);
+        color: $white;
+        padding-left: 2rem;
+        // padding-right: 2rem;
+        transition: all ease-in-out 300ms;
+        // span {
+        //   color: $white;
+        //   border-color: $white;
+        // }
+      }
     }
   }
 }
@@ -139,6 +150,10 @@
   pointer-events: none;
   z-index: 0;
   position: fixed;
+
+  .slider {
+    height: 100%;
+  }
   img {
     object-fit: cover;
     border-radius: 5px;
