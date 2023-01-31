@@ -70,6 +70,7 @@ const ImageFollower = () => {
           top: imagePos.y - 112,
         }}
       >
+        {}
         <div className="slider">
           <img src={hoveredImage && hoveredImageSlug} />
         </div>
@@ -127,7 +128,10 @@ const Projects = ({ projects }) => {
               <div
                 className="project-item"
                 data-id={project.id}
-                data-slug={project.attributes.headerImage.data.attributes.url}
+                data-slug={
+                  project.attributes.headerImage.data.attributes.formats.small
+                    .url
+                }
               >
                 <h3>{project.attributes.title}</h3>
                 <span className="span--desktop">

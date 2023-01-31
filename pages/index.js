@@ -46,7 +46,7 @@ Home.getInitialProps = async (ctx) => {
     {
       populate: {
         headerImage: {
-          fields: ["name", "url"],
+          fields: ["name", "url", "formats"],
         },
       },
     },
