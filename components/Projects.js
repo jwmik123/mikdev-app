@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
-import Link from "next/link";
 
 const ImageFollower = () => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
@@ -12,7 +12,7 @@ const ImageFollower = () => {
 
   useEffect(() => {
     gsap.to(imageRef.current, {
-      duration: 0.3,
+      duration: 0.4,
       left: imagePos.x - 150,
       top: imagePos.y - 112,
       ease: "Power1.out",
@@ -42,11 +42,11 @@ const ImageFollower = () => {
       setHoveredImage(id);
       setIsImageVisible(true);
     };
-
     const handleMouseLeave = () => {
       setHoveredImage(null);
       setIsImageVisible(false);
     };
+
     const itemElements = document.querySelectorAll(".project-item");
     itemElements.forEach((element) => {
       element.addEventListener("mouseenter", handleMouseEnter);
@@ -71,6 +71,7 @@ const ImageFollower = () => {
         }}
       >
         {}
+        {/* TODO: create a top-down slider that changes to the next image on div hover */}
         <div className="slider">
           <img src={hoveredImage && hoveredImageSlug} />
         </div>
