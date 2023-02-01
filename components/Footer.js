@@ -1,5 +1,7 @@
 import { useState } from "react";
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
+
 const Footer = () => {
   const [active, setActive] = useState(false);
   return (
@@ -35,6 +37,12 @@ const Footer = () => {
                   }}
                 >
                   joel@mikdevelopment.nl
+                  <Image
+                    className="link-icon"
+                    src="/link.svg"
+                    width={15}
+                    height={15}
+                  />
                 </span>
               )}
             </div>

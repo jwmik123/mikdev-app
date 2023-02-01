@@ -10,6 +10,9 @@ const ImageFollower = () => {
   const [isImageVisible, setIsImageVisible] = useState(false);
   const imageRef = useRef(null);
 
+  // Gets rid of the target null ref warnings when not hovering a project.
+  gsap.config({ nullTargetWarn: false });
+
   useEffect(() => {
     gsap.to(imageRef.current, {
       duration: 0.4,
