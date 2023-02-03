@@ -39,7 +39,7 @@ const Footer = () => {
                   joel@mikdevelopment.nl
                   <Image
                     className="link-icon"
-                    src="/link.svg"
+                    src="/static/link.svg"
                     width={15}
                     height={15}
                   />

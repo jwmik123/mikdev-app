@@ -12,6 +12,9 @@
     overflow: hidden;
     display: flex;
     align-items: center;
+    .orange-dot {
+      color: $orange;
+    }
     @media (max-width: $layout-breakpoint-medium) {
       &:first-child {
         margin-top: 4rem;
