@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.mikdevelopment.nl",
+        hostname: "mikdevelopment.nl",
         port: "",
       },
     ],
