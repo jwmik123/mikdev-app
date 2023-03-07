@@ -128,7 +128,7 @@ const Projects = ({ projects }) => {
 
         {projects.data.slice(0, 4).map((project) => (
           <div key={project.id}>
-            <Link href={`/projects/${project.id}`} className="project-link">
+            <a href={`${project.attributes.content}`} className="project-link">
               <div
                 className="project-item"
                 data-id={project.id}
@@ -143,7 +143,7 @@ const Projects = ({ projects }) => {
                 </span>
                 <span className="span--mobile">I &amp; O</span>
               </div>
-            </Link>
+            </a>
             <ImageFollower id={project.id} />
           </div>
         ))}
