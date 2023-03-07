@@ -20,7 +20,7 @@ const Footer = () => {
           design — Mobile design —
         </span>
       </Marquee>
-      <footer>
+      <footer id="footer">
         <div className="footer-container">
           <div className="footer-top">
             <h1>Interesse in een samenwerking?</h1>

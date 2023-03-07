@@ -118,12 +118,13 @@ const Projects = ({ projects }) => {
           delay: 1.8,
         }}
         className="projects"
+        id="projects"
       >
         <div className="project-section-titles">
           <span className="project-section-title">// Projecten</span>
-          <button className="project-section-all-projects">
+          {/* <button className="project-section-all-projects">
             <Link href="/projects">Bekijk alle projecten &gt;</Link>
-          </button>
+          </button> */}
         </div>
 
         {projects.data.slice(0, 4).map((project) => (
@@ -138,9 +139,7 @@ const Projects = ({ projects }) => {
                 }
               >
                 <h3>{project.attributes.title}</h3>
-                <span className="span--desktop">
-                  Interactie &amp; Ontwikkeling
-                </span>
+                <span className="span--desktop">{project.attributes.slug}</span>
                 <span className="span--mobile">I &amp; O</span>
               </div>
             </a>
