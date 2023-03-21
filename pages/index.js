@@ -6,7 +6,6 @@ import Banner from "../components/Banner";
 import Projects from "../components/Projects";
 import About from "../components/About";
 
-import { fetchAPI } from "../lib/api";
 import axios from "axios";
 import qs from "qs";
 import Footer from "../components/Footer";
@@ -14,11 +13,11 @@ import Footer from "../components/Footer";
 export default function Home({ projects }) {
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loading
-      ? document.querySelector("body").classList.add("loading")
-      : document.querySelector("body").classList.remove("loading");
-  }, [loading]);
+  // useEffect(() => {
+  //   loading
+  //     ? document.querySelector("body").classList.add("loading")
+  //     : document.querySelector("body").classList.remove("loading");
+  // }, [loading]);
 
   return (
     <AnimatePresence>
@@ -47,6 +46,9 @@ Home.getInitialProps = async (ctx) => {
       populate: {
         headerImage: {
           fields: ["name", "url", "formats"],
+        },
+        coverVideo: {
+          fields: ["name", "url"],
         },
       },
     },

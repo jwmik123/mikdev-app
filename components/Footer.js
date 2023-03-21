@@ -12,12 +12,10 @@ const Footer = () => {
         speed="120"
       >
         <span>
-          Web design — Interfaces — UI/UX — Branding — Content Management — App
-          design — Mobile design —
+          Web design — Interfaces — UI/UX — Branding — Content Management —
         </span>
         <span>
-          Web design — Interfaces — UI/UX — Branding — Content Management — App
-          design — Mobile design —
+          Web design — Interfaces — UI/UX — Branding — Content Management —
         </span>
       </Marquee>
       <footer id="footer">

@@ -18,6 +18,9 @@ ProjectsList.getInitialProps = async (ctx) => {
         headerImage: {
           fields: ["name", "url"],
         },
+        coverVideo: {
+          fields: ["name", "url"],
+        },
       },
     },
     { encodeValuesOnly: true }

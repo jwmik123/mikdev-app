@@ -10,7 +10,6 @@ const ImageFollower = () => {
   const [isImageVisible, setIsImageVisible] = useState(false);
   const imageRef = useRef(null);
 
-  // Gets rid of the target null ref warnings when not hovering a project.
   gsap.config({ nullTargetWarn: false });
 
   useEffect(() => {
@@ -47,6 +46,7 @@ const ImageFollower = () => {
     };
     const handleMouseLeave = () => {
       setHoveredImage(null);
+      setHoveredImageSlug(null);
       setIsImageVisible(false);
     };
 
@@ -73,10 +73,10 @@ const ImageFollower = () => {
           top: imagePos.y - 112,
         }}
       >
-        {}
-        {/* TODO: create a top-down slider that changes to the next image on div hover */}
         <div className="slider">
-          <img src={hoveredImage && hoveredImageSlug} />
+          <video key={hoveredImage} autoPlay={true} loop={true} muted={true}>
+            <source src={hoveredImageSlug} />
+          </video>
         </div>
       </div>
     )
@@ -122,9 +122,6 @@ const Projects = ({ projects }) => {
       >
         <div className="project-section-titles">
           <span className="project-section-title">// Projecten</span>
-          {/* <button className="project-section-all-projects">
-            <Link href="/projects">Bekijk alle projecten &gt;</Link>
-          </button> */}
         </div>
 
         {projects.data.slice(0, 4).map((project) => (
@@ -132,18 +129,15 @@ const Projects = ({ projects }) => {
             <a href={`${project.attributes.content}`} className="project-link">
               <div
                 className="project-item"
-                data-id={project.id}
-                data-slug={
-                  project.attributes.headerImage.data.attributes.formats.small
-                    .url
-                }
+                data-id={project.attributes.coverVideo.data.id}
+                data-slug={project.attributes.coverVideo.data.attributes.url}
               >
                 <h3>{project.attributes.title}</h3>
                 <span className="span--desktop">{project.attributes.slug}</span>
                 <span className="span--mobile">I &amp; O</span>
               </div>
             </a>
-            <ImageFollower id={project.id} />
+            <ImageFollower />
           </div>
         ))}
       </motion.div>
