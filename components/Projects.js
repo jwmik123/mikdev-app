@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 
@@ -74,8 +73,14 @@ const ImageFollower = () => {
         }}
       >
         <div className="slider">
-          <video key={hoveredImage} autoPlay={true} loop={true} muted={true}>
-            <source src={hoveredImageSlug} />
+          <video
+            preload
+            key={hoveredImage}
+            autoPlay={true}
+            loop={true}
+            muted={true}
+          >
+            <source src={hoveredImageSlug} type="video/mp4" />
           </video>
         </div>
       </div>
