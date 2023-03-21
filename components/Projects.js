@@ -2,12 +2,15 @@ import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
 
+import { useInView } from "react-intersection-observer";
+
 const ImageFollower = () => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
   const [hoveredImage, setHoveredImage] = useState(null);
   const [hoveredImageSlug, setHoveredImageSlug] = useState(null);
   const [isImageVisible, setIsImageVisible] = useState(false);
   const imageRef = useRef(null);
+  const { ref, inView } = useInView({ threshold: 1 });
 
   gsap.config({ nullTargetWarn: false });
 
@@ -45,7 +48,6 @@ const ImageFollower = () => {
     };
     const handleMouseLeave = () => {
       setHoveredImage(null);
-      setHoveredImageSlug(null);
       setIsImageVisible(false);
     };
 
@@ -66,7 +68,7 @@ const ImageFollower = () => {
     isImageVisible && (
       <div
         className="hover-image"
-        ref={imageRef}
+        ref={imageRef && ref}
         style={{
           left: imagePos.x - 150,
           top: imagePos.y - 112,
@@ -74,13 +76,13 @@ const ImageFollower = () => {
       >
         <div className="slider">
           <video
-            preload={true}
+            preload="true"
             key={hoveredImage}
             autoPlay={true}
             loop={true}
             muted={true}
           >
-            <source src={hoveredImageSlug} type="video/mp4" />
+            <source className="video" src={hoveredImageSlug} type="video/mp4" />
           </video>
         </div>
       </div>

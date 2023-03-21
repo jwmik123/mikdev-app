@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Loader from "../components/Loader";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
@@ -24,7 +24,7 @@ export default function Home({ projects }) {
           <div className="container">
             <Header />
             <Banner />
-            <Projects projects={projects} />
+            <Projects id="projects" projects={projects} />
             <About />
           </div>
           <Footer />
