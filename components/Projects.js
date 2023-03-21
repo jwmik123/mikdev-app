@@ -74,7 +74,7 @@ const ImageFollower = () => {
       >
         <div className="slider">
           <video
-            preload
+            preload={true}
             key={hoveredImage}
             autoPlay={true}
             loop={true}
