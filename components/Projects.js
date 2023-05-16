@@ -16,7 +16,6 @@ const ImageFollower = () => {
       duration: 0.4,
       left: imagePos.x - 150,
       top: imagePos.y - 112,
-      rotate: imagePos.x * 0.02 - imagePos.y * 0.02,
       ease: "Power1.out",
     });
   }, [imagePos]);
