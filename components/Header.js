@@ -23,9 +23,6 @@ const Header = () => {
             <li>
               <a href="#strategy">Strategie</a>
             </li>
-            {/* <li>
-              <a href="/about">Over MD.</a>
-            </li> */}
           </nav>
           <div className="contact">
             <a href="#footer">Laten we samenwerken.</a>
