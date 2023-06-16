@@ -71,11 +71,12 @@ const ImageFollower = () => {
           top: imagePos.y - 112,
         }}
       >
-        <div className="slider">
+        <img src={hoveredImageSlug} alt="" />
+        {/* <div className="slider">
           <video key={hoveredImage} autoPlay={true} loop={true} muted={true}>
             <source className="video" src={hoveredImageSlug} type="video/mp4" />
           </video>
-        </div>
+        </div> */}
       </div>
     )
   );
@@ -124,11 +125,12 @@ const Projects = ({ projects }) => {
 
         {projects.data.slice(0, 4).map((project) => (
           <div key={project.id}>
+            {console.log(project.attributes.headerImage.data.attributes.url)}
             <a href={`${project.attributes.content}`} className="project-link">
               <div
                 className="project-item"
                 data-id={project.attributes.coverVideo.data.id}
-                data-slug={project.attributes.coverVideo.data.attributes.url}
+                data-slug={project.attributes.headerImage.data.attributes.url}
               >
                 <h3>{project.attributes.title}</h3>
                 <span className="span--desktop">{project.attributes.slug}</span>

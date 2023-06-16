@@ -17,20 +17,20 @@ const Header = () => {
         <div className="header-inner">
           <div className="logo">MD.</div>
           <nav className="nav">
-            <li>
+            {/* <li>
               <a href="#projects">Projecten</a>
             </li>
             <li>
               <a href="#strategy">Strategie</a>
-            </li>
+            </li> */}
           </nav>
           <div className="contact">
             <a href="#footer">Laten we samenwerken.</a>
           </div>
-          <div className="hamburger-menu">
+          {/* <div className="hamburger-menu">
             <span></span>
             <span></span>
-          </div>
+          </div> */}
         </div>
       </motion.div>
     </>

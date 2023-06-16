@@ -47,12 +47,14 @@
       }
     }
     .contact {
-      @media (max-width: $layout-breakpoint-small) {
-        display: none;
-      }
-      @media (max-width: $layout-breakpoint-medium) {
-        flex: 1;
-      }
+      // @media (max-width: $layout-breakpoint-small) {
+      //   display: none;
+      // }
+      // @media (max-width: $layout-breakpoint-medium) {
+      //   flex: 1;
+      // }
+      // flex: 1;
+      align-self: center;
       a {
         color: $orange;
         text-decoration: none;
