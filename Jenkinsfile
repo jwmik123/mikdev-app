@@ -17,7 +17,7 @@ pipeline {
 
         stage('Front-End Build') {
           steps {
-            sh 'yarn install && yarn build'
+            sh 'npm install && npm build'
           }
         }
 
