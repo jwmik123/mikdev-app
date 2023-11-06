@@ -7,22 +7,10 @@ pipeline {
       }
     }
 
-    stage('Install Node and npm') {
-      agent {
-        node {
-          label 'node agent'
-        }
-
-      }
-      steps {
-        dockerNode(image: 'node:latest')
-      }
-    }
-
     stage('Front-End Build') {
       agent {
-        node {
-          label 'node agent'
+        docker {
+          image 'node:latest'
         }
 
       }
