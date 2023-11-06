@@ -7,28 +7,17 @@ pipeline {
       }
     }
 
-    stage('Log') {
-      parallel {
-        stage('Log') {
-          steps {
-            sh 'ls -la'
-          }
-        }
-
-        stage('Front-End Build') {
-          steps {
-            sh 'npm install && npm build'
-          }
-        }
-
-      }
-    }
-
     stage('Install Node and npm') {
       steps {
         sh '''sudo apt-get update && sudo apt-get install -y nodejs npm
 node --version
 npm --version'''
+      }
+    }
+
+    stage('Front-End Build') {
+      steps {
+        sh 'npm i && npm build'
       }
     }
 
