@@ -8,9 +8,26 @@ pipeline {
     }
 
     stage('Log') {
-      agent any
-      steps {
-        sh 'ls -la'
+      parallel {
+        stage('Log') {
+          agent any
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('Install Node') {
+          agent {
+            docker {
+              image 'node:latest'
+            }
+
+          }
+          steps {
+            sh 'npm install && npm run build'
+          }
+        }
+
       }
     }
 
