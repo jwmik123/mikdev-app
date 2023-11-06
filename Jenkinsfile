@@ -8,6 +8,12 @@ pipeline {
     }
 
     stage('Install Node and npm') {
+      agent {
+        node {
+          label 'node agent'
+        }
+
+      }
       steps {
         sh '''sudo apt-get update && sudo apt-get install -y nodejs npm
 node --version
@@ -16,6 +22,12 @@ npm --version'''
     }
 
     stage('Front-End Build') {
+      agent {
+        node {
+          label 'node agent'
+        }
+
+      }
       steps {
         sh 'npm i && npm build'
       }
