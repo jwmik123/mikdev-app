@@ -7,15 +7,9 @@ pipeline {
       }
     }
 
-    stage('Front-End Build') {
-      agent {
-        docker {
-          image 'node:latest'
-        }
-
-      }
+    stage('Log') {
       steps {
-        sh 'npm install && npm run build'
+        sh 'ls -la'
       }
     }
 
