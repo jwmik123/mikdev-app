@@ -15,6 +15,7 @@ pipeline {
     }
 
     stage('Build Application') {
+      agent any
       steps {
         sh 'docker build -t mikdev-app .'
       }
