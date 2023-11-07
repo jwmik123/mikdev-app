@@ -2,9 +2,9 @@
 FROM node:16-alpine as builder
 WORKDIR /app
 COPY package.json yarn.lock ./
-RUN yarn install # Or `npm install` if using npm
+RUN yarn install
 COPY . .
-RUN yarn build # Or `npm run build` if using npm
+RUN yarn build
 
 # Stage 2: Run the Next.js application using the output from the builder stage
 FROM node:16-alpine as runner
@@ -21,4 +21,4 @@ ENV NODE_ENV production
 # Expose the port Next.js runs on
 EXPOSE 3000
 
-CMD ["yarn", "start"] # Or `npm start` if using npm
+CMD ["yarn", "start"]
