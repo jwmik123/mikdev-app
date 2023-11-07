@@ -15,14 +15,7 @@ pipeline {
     }
 
     stage('Build Application') {
-      agent {
-        docker {
-          image 'node:20.9.0-alpine3.18'
-        }
-
-      }
-      environment {
-        DOCKER_TLS_VERIFY = '0'
+      agent any
       }
       steps {
         sh 'docker build -t mikdev-app .'
