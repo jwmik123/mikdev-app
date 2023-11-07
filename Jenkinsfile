@@ -8,26 +8,15 @@ pipeline {
     }
 
     stage('Log') {
-      parallel {
-        stage('Log') {
-          agent any
-          steps {
-            sh 'ls -la'
-          }
-        }
+      agent any
+      steps {
+        sh 'ls -la'
+      }
+    }
 
-        stage('Install Node') {
-          agent {
-            docker {
-              image 'node:latest'
-            }
-
-          }
-          steps {
-            sh 'npm install && npm run build'
-          }
-        }
-
+    stage('Build Application') {
+      steps {
+        sh 'docker build -t mikdev-app .'
       }
     }
 
