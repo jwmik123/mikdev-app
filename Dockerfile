@@ -2,14 +2,11 @@
 FROM node:16-alpine as builder
 
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+COPY package.json ./
+RUN npm install
 
 COPY . .
-RUN yarn build
-
-# Stage 2: Run the application
-FROM node:16-alpine
+RUN npm run build
 
 WORKDIR /app
 COPY --from=builder /app/next.config.js ./
@@ -20,4 +17,4 @@ COPY --from=builder /app/node_modules ./node_modules
 EXPOSE 3000
 ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["yarn", "start"]
+CMD ["node", "start"]
