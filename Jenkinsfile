@@ -27,7 +27,13 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'docker build .'
+        sh 'docker build -t mikdev:latest .'
+      }
+    }
+
+    stage('Run the testserver') {
+      steps {
+        sh 'docker run -p 3000:3000 mikdev:latest'
       }
     }
 
