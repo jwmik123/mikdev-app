@@ -21,6 +21,9 @@ pipeline {
         }
 
       }
+      environment {
+        DOCKER_TLS_VERIFY = '0'
+      }
       steps {
         sh 'docker build -t mikdev-app .'
       }
