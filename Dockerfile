@@ -1,7 +1,7 @@
 # Stage 1: Build the Next.js application
 FROM node:16-alpine as builder
 WORKDIR /app
-COPY package.json yarn.lock ./ # Or use package-lock.json if using npm
+COPY package.json yarn.lock ./
 RUN yarn install # Or `npm install` if using npm
 COPY . .
 RUN yarn build # Or `npm run build` if using npm
