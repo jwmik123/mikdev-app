@@ -8,16 +8,20 @@ pipeline {
     }
 
     stage('Log') {
-      agent any
-      steps {
-        sh 'ls -la'
-      }
-    }
+      parallel {
+        stage('Log') {
+          agent any
+          steps {
+            sh 'ls -la'
+          }
+        }
 
-    stage('Build Application') {
-      agent any
-      steps {
-        sh 'docker build -f Dockerfile .'
+        stage('Build Project') {
+          steps {
+            sh 'npm i && npm run build'
+          }
+        }
+
       }
     }
 
