@@ -53,7 +53,7 @@ pipeline {
         emailext(subject: 'Build status for Job ${ENV,var="JOB_NAME"}', body: '''Build Status: ${BUILD_STATUS}
                  Job Name: ${JOB_NAME}
                  Build Number: ${BUILD_NUMBER}
-                 More info at: ${BUILD_URL}''', recipientProviders: [[$class: 'DevelopersRecipientProvider']], to: 'joelmik123@email.com')
+                 More info at: ${BUILD_URL}''', recipientProviders: [[$class: 'DevelopersRecipientProvider']], to: 'joel.mik@hva.nl')
       }
     }
 
