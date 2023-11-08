@@ -50,24 +50,28 @@ pipeline {
   post {
     always {
       script {
-        def qg = waitForQualityGate()
-        if (qg.status != 'OK') {
-          error "Pipeline aborted due to quality gate failure: ${qg.status}"
-        }
-      }
-    }
-    success {
-      stage('Deploy and Run Server') {
-        steps {
-          sh 'docker build -t mikdev:latest .'
-          sh 'docker run -d -p 3000:3000 mikdev:latest'
+        def qg = waitForQualityGate() // This requires the SonarQube webhook to be correctly configured
+        if (qg.status == 'OK') {
+          env.QUALITY_GATE_PASS = 'true'
+        } else {
+          error "Quality Gate did not pass: ${qg.status}"
         }
       }
     }
   }
 
-  
   environment {
+    QUALITY_GATE_PASS = 'false'
     PATH = "/opt/sonar-scanner/bin:${env.PATH}"
+  }
+}
+
+if (env.QUALITY_GATE_PASS == 'true') {
+  node {
+    stage('Deploy and Run Server') {
+      // Your deploy steps here
+      sh 'docker build -t mikdev:latest .'
+      sh 'docker run -d -p 3000:3000 mikdev:latest'
+    }
   }
 }
