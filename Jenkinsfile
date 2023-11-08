@@ -27,13 +27,6 @@ pipeline {
               '''
             }
 
-            // script {
-            //   def qg = waitForQualityGate()
-            //   if (qg.status != 'OK') {
-            //     error "Pipeline gestopt omdat de Quality Gate gefaald is: ${qg.status}"
-            //   }
-            // }
-
           }
         }
 
@@ -43,24 +36,35 @@ pipeline {
     stage('Deploy to Docker') {
       steps {
         script {
-          // Check if there are any running containers
           def activeContainers = sh(script: "docker ps -q", returnStdout: true).trim()
           // Stop them if there are any
           if (activeContainers) {
             sh "docker stop ${activeContainers}"
           }
         }
+
         sh 'docker build -t mikdev-app:latest .'
         sh 'docker run -d -p 3000:3000 mikdev-app:latest'
       }
     }
 
     stage('Email Build Status') {
-      steps {
-        emailext(subject: 'Build status for Job ${ENV,var="JOB_NAME"}', body: '''Build Status: ${BUILD_STATUS}
+      parallel {
+        stage('Email Build Status') {
+          steps {
+            emailext(subject: 'Build status for Job ${ENV,var="JOB_NAME"}', body: '''Build Status: ${BUILD_STATUS}
                  Job Name: ${JOB_NAME}
                  Build Number: ${BUILD_NUMBER}
-                 More info at: ${BUILD_URL}''', recipientProviders: [[$class: 'DevelopersRecipientProvider']], to: 'joel.mik@hva.nl')
+                 More info at: ${BUILD_URL}''', recipientProviders: [[$class: 'DevelopersRecipientProvider']], to: 'joel.mik@hva.nl', attachLog: true, attachmentsPattern: '*.csv')
+          }
+        }
+
+        stage('Mail notification') {
+          steps {
+            mail(subject: 'Build status', body: 'Build SUCCESFULL', to: 'joel.mik@hva.nl', replyTo: 'joel.mik@hva.nl')
+          }
+        }
+
       }
     }
 
@@ -70,6 +74,5 @@ pipeline {
   }
   triggers {
     githubPush()
-    // pollSCM('H/30 * * * *')
   }
 }
