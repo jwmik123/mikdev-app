@@ -49,22 +49,11 @@ pipeline {
     }
 
     stage('Email Build Status') {
-      parallel {
-        stage('Email Build Status') {
-          steps {
-            emailext(subject: 'Build status for Job ${ENV,var="JOB_NAME"}', body: '''Build Status: ${BUILD_STATUS}
+      steps {
+        emailext(subject: 'Build status for Job ${ENV,var="JOB_NAME"}', body: '''Build Status: ${BUILD_STATUS}
                  Job Name: ${JOB_NAME}
                  Build Number: ${BUILD_NUMBER}
                  More info at: ${BUILD_URL}''', recipientProviders: [[$class: 'DevelopersRecipientProvider']], to: 'joel.mik@hva.nl', attachLog: true, attachmentsPattern: '*.csv')
-          }
-        }
-
-        stage('Mail notification') {
-          steps {
-            mail(subject: 'Build status', body: 'Build SUCCESFULL', to: 'joel.mik@hva.nl', replyTo: 'joel.mik@hva.nl')
-          }
-        }
-
       }
     }
 
