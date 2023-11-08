@@ -33,6 +33,12 @@ pipeline {
       }
     }
 
+    stage('Wait for Quality Gate status') {
+      steps {
+        waitForQualityGate(credentialsId: 'Jenkins', abortPipeline: true)
+      }
+    }
+
   }
   environment {
     PATH = "/opt/sonar-scanner/bin:${env.PATH}"
