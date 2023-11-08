@@ -19,6 +19,10 @@ pipeline {
         stage('Build Project') {
           steps {
             sh 'npm i && npm run build'
+            withSonarQubeEnv('sonarscanner') {
+              sh 'sh \'sonar-scanner\''
+            }
+
           }
         }
 
