@@ -45,7 +45,9 @@ pipeline {
     //   }
     // }
 
-    post {
+  }
+
+  post {
     always {
       script {
         def qg = waitForQualityGate()
@@ -62,8 +64,6 @@ pipeline {
         }
       }
     }
-  }
-
   }
 
   
