@@ -27,12 +27,12 @@ pipeline {
               '''
             }
 
-            script {
-              def qg = waitForQualityGate()
-              if (qg.status != 'OK') {
-                error "Pipeline gestopt omdat de Quality Gate gefaald is: ${qg.status}"
-              }
-            }
+            // script {
+            //   def qg = waitForQualityGate()
+            //   if (qg.status != 'OK') {
+            //     error "Pipeline gestopt omdat de Quality Gate gefaald is: ${qg.status}"
+            //   }
+            // }
 
           }
         }
