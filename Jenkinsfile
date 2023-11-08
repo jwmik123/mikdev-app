@@ -33,16 +33,16 @@ pipeline {
       }
     }
 
+    stage('Report email') {
+      steps {
+        mail(subject: 'Build status', body: 'Log of the most recent build', to: 'joel.mik@hva.nl', attachLog: true)
+      }
+    }
+
     stage('Build') {
       steps {
         sh 'docker build -t mikdev-app:latest .'
         sh 'docker run -p 3000:3000 mikdev-app:latest'
-      }
-    }
-
-    stage('Report email') {
-      steps {
-        mail(subject: 'Build status', body: 'Build succesful', to: 'joel.mik@hva.nl')
       }
     }
 
