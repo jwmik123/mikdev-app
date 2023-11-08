@@ -19,7 +19,12 @@ pipeline {
         stage('SonarQube scanner') {
           steps {
             withSonarQubeEnv('sonarscanner') {
-              sh '/opt/sonar-scanner/sonar-scanner'
+              sh '''sonar-scanner \\
+  -Dsonar.projectKey=mikdev-app \\
+  -Dsonar.organization=jwmik123 \\
+  -Dsonar.host.url=https://sonarcloud.io \\
+  -Dsonar.login=04315f70b1b94a989ed7c6112a12e0989aede8a8
+'''
             }
 
           }
