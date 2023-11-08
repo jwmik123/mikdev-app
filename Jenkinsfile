@@ -32,7 +32,7 @@ pipeline {
 
       }
     }
-    // quality gate should pass before building and running docker image
+    // quality gate should pass before building and running docker image test
     stage('Wait for Quality Gate status') {
       steps {
         waitForQualityGate(credentialsId: 'Jenkins', abortPipeline: true)
