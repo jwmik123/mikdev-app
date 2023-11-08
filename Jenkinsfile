@@ -16,9 +16,8 @@ pipeline {
           }
         }
 
-        stage('Build Project') {
+        stage('SonarQube scanner') {
           steps {
-            sh 'npm i && npm run build'
             withSonarQubeEnv('sonarscanner') {
               sh 'sh \'sonar-scanner\''
             }
