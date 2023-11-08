@@ -36,7 +36,13 @@ pipeline {
     stage('Build') {
       steps {
         sh 'docker build -t mikdev-app:latest .'
-        sh 'docker run -p 3000:3000 mikdev-app:latest'
+        sh 'docker run -d -p 3000:3000 mikdev-app:latest'
+      }
+    }
+
+    stage('Email Build Status') {
+      steps {
+        emailext(subject: 'Jenkins build:${currentBuild.currentResult}', attachLog: true, body: '${currentBuild.currentResult}: Job ${env.JOB_NAME}\\nMore Info can be found here: ${env.BUILD_URL}', attachmentsPattern: '*.csv')
       }
     }
 
