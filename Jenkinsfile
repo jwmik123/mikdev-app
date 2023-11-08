@@ -33,18 +33,37 @@ pipeline {
       }
     }
 
-    stage('Build') {
-      steps {
-        sh 'docker build -t mikdev:latest .'
+    // stage('Build') {
+    //   steps {
+    //     sh 'docker build -t mikdev:latest .'
+    //   }
+    // }
+
+    // stage('Run the testserver') {
+    //   steps {
+    //     sh 'docker run -p 3000:3000 mikdev:latest'
+    //   }
+    // }
+
+  }
+
+  post {
+    always {
+      script {
+        def qg = waitForQualityGate()
+        if (qg.status != 'OK') {
+          error "Pipeline aborted due to quality gate failure: ${qg.status}"
+        }
       }
     }
-
-    stage('Run the testserver') {
-      steps {
-        sh 'docker run -p 3000:3000 mikdev:latest'
+    success {
+      stage('Deploy and Run Server') {
+        steps {
+          sh 'docker build -t mikdev:latest .'
+          sh 'docker run -d -p 3000:3000 mikdev:latest'
+        }
       }
     }
-
   }
   environment {
     PATH = "/opt/sonar-scanner/bin:${env.PATH}"
