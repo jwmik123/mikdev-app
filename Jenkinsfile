@@ -35,7 +35,7 @@ pipeline {
 
     stage('Wait for Quality Gate status') {
       steps {
-        waitForQualityGate(abortPipeline: true, webhookSecretId: 'momootje')
+        waitForQualityGate(abortPipeline: true, webhookSecretId: 'momootje', credentialsId: 'Jenkins')
       }
     }
 
