@@ -70,6 +70,6 @@ pipeline {
   }
   triggers {
     githubPush()
-    pollSCM('H/5 * * * *')
+    pollSCM('H/30 * * * *')
   }
 }
