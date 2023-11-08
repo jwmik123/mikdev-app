@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  triggers {
+    GitHubPushTrigger()
+  }
   stages {
     stage('Checkout Code') {
       steps {
