@@ -43,7 +43,7 @@ pipeline {
 
     stage('Email Build Status') {
       steps {
-        emailext(subject: 'Jenkins build:${currentBuild.currentResult}', attachLog: true, body: '${currentBuild.currentResult}: Job ${env.JOB_NAME}\\nMore Info can be found here: ${env.BUILD_URL}', attachmentsPattern: '*.csv', to: 'joel.mik@hva.nl')
+        emailext(subject: 'Jenkins build', attachLog: true, body: '${currentBuild.currentResult}: Job ${env.JOB_NAME}\\nMore Info can be found here: ${env.BUILD_URL}', attachmentsPattern: '*.csv', to: 'joel.mik@hva.nl')
       }
     }
 
