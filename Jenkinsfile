@@ -19,7 +19,7 @@ pipeline {
         stage('SonarQube scanner') {
           steps {
             withSonarQubeEnv('sonarscanner') {
-              sh 'sonar-scanner'
+              sh '/opt/sonar-scanner/sonar-scanner'
             }
 
           }
