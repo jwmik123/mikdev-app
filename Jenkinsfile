@@ -33,20 +33,11 @@ pipeline {
       }
     }
 
-    // stage('Build') {
-    //   steps {
-    //     sh 'docker build -t mikdev:latest .'
-    //   }
-    // }
-
-    // stage('Run the testserver') {
-    //   steps {
-    //     sh 'docker run -p 3000:3000 mikdev:latest'
-    //   }
-    // }
-
   }
-
+  environment {
+    QUALITY_GATE_PASS = 'false'
+    PATH = "/opt/sonar-scanner/bin:${env.PATH}"
+  }
   post {
     always {
       script {
@@ -57,21 +48,8 @@ pipeline {
           error "Quality Gate did not pass: ${qg.status}"
         }
       }
-    }
-  }
 
-  environment {
-    QUALITY_GATE_PASS = 'false'
-    PATH = "/opt/sonar-scanner/bin:${env.PATH}"
-  }
-}
-
-if (env.QUALITY_GATE_PASS == 'true') {
-  node {
-    stage('Deploy and Run Server') {
-      // Your deploy steps here
-      sh 'docker build -t mikdev:latest .'
-      sh 'docker run -d -p 3000:3000 mikdev:latest'
     }
+
   }
 }
