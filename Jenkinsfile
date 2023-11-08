@@ -35,6 +35,7 @@ pipeline {
 
     stage('Build') {
       steps {
+        sh 'docker stop $(docker ps -q)'
         sh 'docker build -t mikdev-app:latest .'
         sh 'docker run -d -p 3000:3000 mikdev-app:latest'
       }
