@@ -42,7 +42,14 @@ pipeline {
 
     stage('Deploy to Docker') {
       steps {
-        sh 'docker stop $(docker ps -q)'
+        script {
+          // Check if there are any running containers
+          def activeContainers = sh(script: "docker ps -q", returnStdout: true).trim()
+          // Stop them if there are any
+          if (activeContainers) {
+            sh "docker stop ${activeContainers}"
+          }
+        }
         sh 'docker build -t mikdev-app:latest .'
         sh 'docker run -d -p 3000:3000 mikdev-app:latest'
       }
