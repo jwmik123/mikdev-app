@@ -45,9 +45,7 @@ pipeline {
     //   }
     // }
 
-  }
-
-  post {
+    post {
     always {
       script {
         def qg = waitForQualityGate()
@@ -65,6 +63,10 @@ pipeline {
       }
     }
   }
+
+  }
+
+  
   environment {
     PATH = "/opt/sonar-scanner/bin:${env.PATH}"
   }
