@@ -1,7 +1,7 @@
 const About = () => {
   return (
     <div className="about">
-      <span className="about__title">// Strategie.</span>
+      <span className="about__title">// Strategie</span>
       <div className="about-container">
         <div className="about-item">
           <h2 className="about-item__title">Interactie.</h2>
