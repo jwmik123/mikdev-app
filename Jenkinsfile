@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+        PATH = "/opt/sonar-scanner/bin:${env.PATH}"
+    }
   stages {
     stage('Checkout Code') {
       steps {
