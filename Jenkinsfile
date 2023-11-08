@@ -27,6 +27,7 @@ pipeline {
               '''
             }
 
+            waitForQualityGate(abortPipeline: true, credentialsId: 'jwmik123')
           }
         }
 
