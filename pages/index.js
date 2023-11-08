@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 
 import axios from "axios";
 import qs from "qs";
+import Pricing from "../components/Pricing";
 
 export default function Home({ projects }) {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,7 @@ export default function Home({ projects }) {
             <Banner />
             <Projects id="projects" projects={projects} />
             <About />
+            <Pricing />
           </div>
           <Footer />
         </>
