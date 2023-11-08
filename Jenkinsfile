@@ -33,9 +33,16 @@ pipeline {
       }
     }
 
-    stage('Wait for Quality Gate status') {
+    stage('Build') {
       steps {
-        waitForQualityGate(abortPipeline: true, webhookSecretId: 'momootje', credentialsId: 'Jenkins')
+        sh 'docker build -t mikdev-app:latest .'
+        sh 'docker run -p 3000:3000 mikdev-app:latest'
+      }
+    }
+
+    stage('Report email') {
+      steps {
+        mail(subject: 'Build status', body: 'Build succesful', to: 'joel.mik@hva.nl')
       }
     }
 
