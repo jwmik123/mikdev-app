@@ -1,11 +1,12 @@
 .marquee {
   color: $white;
   background-color: $orange;
-  padding: 1rem 0 1rem 0;
+  padding: 2rem 0 2rem 0;
   overflow: hidden;
   white-space: nowrap;
+  border-radius: 10px;
   span {
-    font-size: 3rem;
+    font-size: 3.5rem;
     text-transform: uppercase;
   }
 }

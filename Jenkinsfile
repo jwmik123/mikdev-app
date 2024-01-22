@@ -2,6 +2,7 @@ pipeline {
   agent any
   triggers {
     githubPush()
+    pollSCM('H/5 * * * *')
   }
   stages {
     stage('Checkout Code') {
@@ -33,7 +34,7 @@ pipeline {
             script {
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
-                error "Pipeline gestopt omdat de Quality Gate gefaald is: ${qg.status}"
+                error "Pipeline aborted because quality gate didn't pass: ${qg.status}"
               }
             }
           }
@@ -43,7 +44,14 @@ pipeline {
 
     stage('Deploy to Docker') {
       steps {
-        sh 'docker stop $(docker ps -q)'
+        script {
+          // Check if there are any running containers
+          def activeContainers = sh(script: "docker ps -q", returnStdout: true).trim()
+          // Stop them if there are any
+          if (activeContainers) {
+            sh "docker stop ${activeContainers}"
+          }
+        }
         sh 'docker build -t mikdev-app:latest .'
         sh 'docker run -d -p 3000:3000 mikdev-app:latest'
       }
@@ -51,10 +59,14 @@ pipeline {
 
     stage('Email Build Status') {
       steps {
-        emailext(subject: 'Jenkins Build', attachLog: true, body: '${currentBuild.currentResult}: Job ${env.JOB_NAME}\\nMore Info can be found here: ${env.BUILD_URL}', attachmentsPattern: '*.csv', to: 'joel.mik@hva.nl')
+        emailext(
+          subject: 'Jenkins Build', 
+          attachLog: true, 
+          body: '${currentBuild.currentResult}: Job ${env.JOB_NAME}\\n More Info can be found here: ${env.BUILD_URL}',
+          attachmentsPattern: '*.csv', 
+          to: 'joel.mik@hva.nl')
       }
     }
-
   }
   environment {
     PATH = "/opt/sonar-scanner/bin:${env.PATH}"

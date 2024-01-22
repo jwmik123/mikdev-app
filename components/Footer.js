@@ -1,23 +1,10 @@
 import { useState } from "react";
-import Marquee from "react-fast-marquee";
 
 const Footer = () => {
   const [active, setActive] = useState(false);
   return (
     <>
-      <Marquee
-        className="marquee"
-        gradient="false"
-        gradientColor="orange"
-        speed="120"
-      >
-        <span>
-          Web design — Interfaces — UI/UX — Branding — Content Management —
-        </span>
-        <span>
-          Web design — Interfaces — UI/UX — Branding — Content Management —
-        </span>
-      </Marquee>
+    
       <footer id="footer">
         <div className="footer-container">
           <div className="footer-top">
