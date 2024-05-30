@@ -27,6 +27,6 @@ export default [
     title: "Posterity Watches",
     slug: "posterity",
     mediaUrl: "https://unsplash.it/300/224",
-    iframeLink: "https://www.posteritywatches.io",
+    iframeLink: "https://posterity-watches-jwmik123.vercel.app/",
   },
 ];

@@ -6,8 +6,9 @@ import Banner from "../components/Banner";
 import Projects from "../components/Projects";
 import About from "../components/About";
 import Footer from "../components/Footer";
-
+// import Marquee from "../components/Marquee";
 import Marquee from "react-fast-marquee";
+// import Experience from "three/Experience";
 
 import axios from "axios";
 import qs from "qs";
@@ -28,22 +29,27 @@ export default function Home({ projects }) {
             <Header />
             <Banner />
             <Projects id="projects" projects={projects} />
-            <About />
             <Marquee
               className="marquee"
               gradient="false"
               gradientColor="orange"
               speed="120"
             >
-        <span>
-          Web design — Interfaces — UI/UX — Branding — Content Management —
-        </span>
-        <span>
-          Web design — Interfaces — UI/UX — Branding — Content Management —
-        </span>
-      </Marquee>
-            <Pricing />
+              <span>
+                Web design — Interfaces — UI/UX — Branding — Content Management
+                —
+              </span>
+              <span>
+                Web design — Interfaces — UI/UX — Branding — Content Management
+                —
+              </span>
+            </Marquee>
+            {/* <Marquee /> */}
+            <About />
+
+            {/* <Pricing /> */}
           </div>
+
           <Footer />
         </>
       )}
