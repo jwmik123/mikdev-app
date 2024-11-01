@@ -55,17 +55,18 @@ const BannerRowTop = ({ title }) => {
         <AnimatedLetters title={title} />
       </div>
       <motion.div
-        initial={{ opacity: 0, y: 80 }}
+        initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
           ease: "easeInOut",
-          duration: 1,
-          delay: 1.5,
+          duration: 0.8,
+          delay: 2,
         }}
         className="row-col"
       >
         <span className="row-message">
-          Til jouw bedrijf naar een hoger niveau door digitale innovatie.
+          <span className="row-message__top">Creative Developer</span> <br />
+          <span className="row-message__bottom">Frontend and WebGPU</span>
         </span>
       </motion.div>
     </div>

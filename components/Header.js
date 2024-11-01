@@ -15,7 +15,7 @@ const Header = () => {
         className="header"
       >
         <div className="header-inner">
-          <div className="logo">MD.</div>
+          <div className="logo">JM.</div>
           <nav className="nav">
             {/* <li>
               <a href="#projects">Projecten</a>
