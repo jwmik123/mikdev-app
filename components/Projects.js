@@ -123,7 +123,7 @@ const Projects = ({ projects }) => {
           <span className="project-section-title">// Projecten</span>
         </div>
 
-        {projects.data.slice(0, 4).map((project) => (
+        {projects.data.slice(0, 5).map((project) => (
           <div key={project.id}>
             {console.log(project.attributes.headerImage.data.attributes.url)}
             <a href={`${project.attributes.content}`} className="project-link">
