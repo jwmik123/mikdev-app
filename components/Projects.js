@@ -72,17 +72,14 @@ const ImageFollower = () => {
         }}
       >
         <img src={hoveredImageSlug} alt="" />
-        {/* <div className="slider">
-          <video key={hoveredImage} autoPlay={true} loop={true} muted={true}>
-            <source className="video" src={hoveredImageSlug} type="video/mp4" />
-          </video>
-        </div> */}
       </div>
     )
   );
 };
 
 const Projects = ({ projects }) => {
+  console.log(projects);
+
   return (
     <motion.div
       transition={{ ease: [0.6, 0.01, -0.05, 0.9], duration: 1.6 }}
@@ -123,23 +120,35 @@ const Projects = ({ projects }) => {
           <span className="project-section-title">// Projecten</span>
         </div>
 
-        {projects.data.slice(0, 5).map((project) => (
-          <div key={project.id}>
-            {console.log(project.attributes.headerImage.data.attributes.url)}
-            <a href={`${project.attributes.content}`} className="project-link">
-              <div
-                className="project-item"
-                data-id={project.attributes.coverVideo.data.id}
-                data-slug={project.attributes.headerImage.data.attributes.url}
+        {projects.data
+          .sort((a, b) => b.id - a.id)
+          .slice(0, 5)
+          .map((project) => (
+            <div key={project.id}>
+              <a
+                href={`${project.attributes.content.split("|")[0]}`}
+                className="project-link"
+                target="_blank"
               >
-                <h3>{project.attributes.title}</h3>
-                <span className="span--desktop">{project.attributes.slug}</span>
-                <span className="span--mobile">I &amp; O</span>
-              </div>
-            </a>
-            <ImageFollower />
-          </div>
-        ))}
+                <div
+                  className="project-item"
+                  // data-id={project.attributes.coverVideo.data.id}
+                  data-slug={project.attributes.headerImage.data.attributes.url}
+                >
+                  <div className="project-item__title">
+                    <h3>{project.attributes.title}</h3>
+                    <p>{project.attributes.content.split("|")[1]}</p>
+                  </div>
+
+                  <span className="span--desktop">
+                    {project.attributes.slug}
+                  </span>
+                  <span className="span--mobile">I &amp; O</span>
+                </div>
+              </a>
+              <ImageFollower />
+            </div>
+          ))}
       </motion.div>
     </motion.div>
   );
