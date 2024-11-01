@@ -25,6 +25,7 @@ $layout-breakpoint-xsmall: 480px;
 body {
   background: $background;
   cursor: none;
+  scroll-behavior: smooth;
 }
 
 .container {

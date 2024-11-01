@@ -23,8 +23,8 @@ const letterAni = {
 const Banner = () => {
   return (
     <motion.div className="banner" variants={banner}>
-      <BannerRowTop title={"Mik"} />
-      <BannerRowBottom title={"Development."} />
+      <BannerRowTop title={"Joël"} />
+      <BannerRowBottom title={"Mik"} />
     </motion.div>
   );
 };
