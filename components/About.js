@@ -1,52 +1,50 @@
 const About = () => {
   return (
     <div className="about">
-      <span className="about__title">// Strategie</span>
+      <span className="about__title">// Strategy</span>
       <div className="about-container">
         <div className="about-item">
-          <h2 className="about-item__title">Interactie.</h2>
+          <h2 className="about-item__title">Interaction.</h2>
           <p className="about-item__text">
-            Als freelance creative developer geloof ik dat een geweldige
-            gebruikerservaring begint bij doordachte interactie en dynamische
-            animaties. Ik zet me in om het navigeren op jouw website niet alleen
-            soepel, maar ook gedenkwaardig te maken. Dankzij mijn aandacht voor
-            detail en gebruiksvriendelijkheid wordt elke klik een positieve
-            beleving.
+            As a freelance creative developer, I believe that a great user
+            experience starts with thoughtful interaction and dynamic
+            animations. I strive to make navigating your website not just
+            smooth, but memorable. Thanks to my attention to detail and focus on
+            usability, every click becomes a positive experience.
           </p>
         </div>
 
         <div className="about-item">
-          <h2 className="about-item__title">Prestatie.</h2>
+          <h2 className="about-item__title">Performance.</h2>
           <p className="about-item__text">
-            In de digitale wereld is snelheid cruciaal. Daarom besteed ik veel
-            tijd aan het optimaliseren van prestaties door gebruik te maken van
-            de beste tools en technieken. Zo zorg ik ervoor dat jouw website
-            snel, efficiënt en betrouwbaar functioneert – essentieel voor een
-            sterke online aanwezigheid.
+            In the digital world, speed is crucial. That's why I dedicate
+            significant time to optimizing performance by using the best tools
+            and techniques. This ensures your website operates quickly,
+            efficiently, and reliably – essential for a strong online presence.
           </p>
         </div>
 
         <div className="about-item">
           <h2 className="about-item__title">Teamwork.</h2>
           <p className="about-item__text">
-            Jouw visie staat centraal in mijn werk. Bij het bouwen van jouw
-            website luister ik aandachtig naar jouw ideeën en wensen. Ik
-            combineer jouw visie met mijn technische expertise om een op maat
-            gemaakt resultaat te leveren dat aan jouw verwachtingen voldoet. We
-            werken nauw samen om jouw project te laten slagen.
+            Your vision is central to my work. When building your website, I
+            listen carefully to your ideas and wishes. I combine your vision
+            with my technical expertise to deliver a customized result that
+            meets your expectations. We work closely together to make your
+            project succeed.
           </p>
         </div>
       </div>
       <div className="about-item">
         <p className="about-item__text">
-          Voor kleine tot grote projecten maak ik gebruik van{" "}
-          <span>Vanilla Javascript</span> zonder frameworks zodat ik complete
-          vrijheid heb in het opbouwen van jouw project. Voor content management
-          gebruik ik <span>Prisma</span> in combinatie met{" "}
-          <span>PostgreSQL</span>. Animaties doen we met <span>GSAP</span> en/of{" "}
-          <span>Framer Motion</span> en voor <span>WebGL</span> gebruik ik{" "}
-          <span>Three.js</span>. Voor grotere projecten gebruik ik{" "}
-          <span>Next.js</span>.
+          For projects both small and large, I use{" "}
+          <span>Vanilla Javascript</span> without frameworks to maintain
+          complete freedom in building your project. For content management, I
+          use <span>Prisma</span> combined with <span>PostgreSQL</span>.
+          Animations are created with <span>GSAP</span> and/or{" "}
+          <span>Framer Motion</span>, and for <span>WebGL</span>, I use{" "}
+          <span>Three.js</span>. For larger projects, I use <span>Next.js</span>
+          .
         </p>
       </div>
     </div>
