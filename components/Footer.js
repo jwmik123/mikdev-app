@@ -4,7 +4,6 @@ const Footer = () => {
   const [active, setActive] = useState(false);
   return (
     <>
-    
       <footer id="footer">
         <div className="footer-container">
           <div className="footer-top">
@@ -56,10 +55,7 @@ const Footer = () => {
             <div>
               <ul>
                 <li>
-                  <a
-                    href="https://instagram.com/mik_development"
-                    target="_blank"
-                  >
+                  <a href="https://instagram.com/joelmik_" target="_blank">
                     Instagram
                   </a>
                 </li>

@@ -122,7 +122,6 @@ const Projects = ({ projects }) => {
 
         {projects.data
           .sort((a, b) => b.id - a.id)
-          .slice(0, 5)
           .map((project) => (
             <div key={project.id}>
               <a
