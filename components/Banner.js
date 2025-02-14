@@ -67,7 +67,13 @@ const BannerRowTop = ({ title }) => {
         <span className="row-message">
           <span className="row-message__top">
             Powered by{" "}
-            <a target="_blank" href="https://squared-media.nl/">
+            <a
+              target="_blank"
+              href="https://squared-media.nl/"
+              style={{
+                color: "#000",
+              }}
+            >
               Squared.
             </a>
           </span>{" "}
