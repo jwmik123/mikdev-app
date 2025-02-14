@@ -23,8 +23,8 @@ const letterAni = {
 const Banner = () => {
   return (
     <motion.div className="banner" variants={banner}>
-      <BannerRowTop title={"Joël"} />
-      <BannerRowBottom title={"Mik"} />
+      <BannerRowTop title={"Mik"} />
+      <BannerRowBottom title={"Development"} />
     </motion.div>
   );
 };
@@ -65,8 +65,14 @@ const BannerRowTop = ({ title }) => {
         className="row-col"
       >
         <span className="row-message">
-          <span className="row-message__top">Creative Developer</span> <br />
-          <span className="row-message__bottom">Frontend and WebGPU</span>
+          <span className="row-message__top">
+            Powered by{" "}
+            <a target="_blank" href="https://squared-media.nl/">
+              Squared.
+            </a>
+          </span>{" "}
+          <br />
+          <span className="row-message__bottom">Creative Development</span>
         </span>
       </motion.div>
     </div>
