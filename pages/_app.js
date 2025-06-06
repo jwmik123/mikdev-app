@@ -9,8 +9,8 @@ function MyApp({ Component, pageProps }) {
     const lenis = new Lenis({
       duration: 1.3,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: "vertical", // vertical, horizontal
-      gestureDirection: "vertical", // vertical, horizontal, both
+      direction: "vertical",
+      gestureDirection: "vertical",
       smooth: true,
       mouseMultiplier: 1,
       smoothTouch: false,
@@ -22,19 +22,24 @@ function MyApp({ Component, pageProps }) {
       requestAnimationFrame(raf);
     };
     requestAnimationFrame(raf);
-  });
+  }, []);
+
+  // Initialize Google Analytics
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-1NKJ0CGKE8');
+  }, []);
+
   return (
     <>
       <Head>
         <title>Mik Development</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NKJ0CGKE8"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-1NKJ0CGKE8');
-        </script>
       </Head>
       <Cursor />
       <Component {...pageProps} />
