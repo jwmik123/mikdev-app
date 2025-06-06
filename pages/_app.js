@@ -28,15 +28,13 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Mik Development</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1NKJ0CGKE8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-1NKJ0CGKE8');
-</script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NKJ0CGKE8"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-1NKJ0CGKE8');
+        </script>
       </Head>
       <Cursor />
       <Component {...pageProps} />
