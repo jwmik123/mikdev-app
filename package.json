@@ -14,7 +14,6 @@
     "@react-three/fiber": "^8.9.1",
     "@studio-freight/lenis": "^0.2.26",
     "axios": "^1.2.6",
-    "create-strapi-app": "^4.5.5",
     "framer-motion": "^7.6.19",
     "global": "^4.4.0",
     "gsap": "^3.11.4",
