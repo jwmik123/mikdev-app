@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { gsap } from "gsap";
+import { compareProjects } from "../lib/pinnedProjects";
 
 const ImageFollower = () => {
   const [imagePos, setImagePos] = useState({ x: 0, y: 0 });
@@ -121,7 +122,7 @@ const Projects = ({ projects }) => {
         </div>
 
         {projects.data
-          .sort((a, b) => b.id - a.id)
+          .sort(compareProjects)
           .map((project) => (
             <div key={project.id}>
               <a
