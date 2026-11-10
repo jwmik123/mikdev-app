@@ -13,6 +13,7 @@ import Marquee from "react-fast-marquee";
 import axios from "axios";
 import qs from "qs";
 import Pricing from "../components/Pricing";
+import { withoutHiddenProjects } from "../lib/hiddenProjects";
 
 export default function Home({ projects }) {
   const [loading, setLoading] = useState(true);
@@ -75,7 +76,7 @@ Home.getInitialProps = async (ctx) => {
     const res = await axios.get(
       `${process.env.NEXT_PUBLIC_BASE_URL}/projects?${query}`
     );
-    const projects = res.data;
+    const projects = withoutHiddenProjects(res.data);
     return { projects };
   } catch (error) {
     return { error };

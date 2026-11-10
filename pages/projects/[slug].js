@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import Experience from "../../components/Experience";
 import { fetchAPI } from "../../lib/api";
+import { isHiddenProject } from "../../lib/hiddenProjects";
 import Image from "next/image";
 
 // export async function getStaticProps({ params }) {
@@ -17,6 +18,9 @@ export async function getServerSideProps({ params }) {
   const projectResponse = await fetchAPI(
     `${process.env.NEXT_PUBLIC_BASE_URL}/projects/${slug}`
   );
+  if (isHiddenProject(projectResponse.data)) {
+    return { notFound: true };
+  }
   return {
     props: {
       project: projectResponse.data,
